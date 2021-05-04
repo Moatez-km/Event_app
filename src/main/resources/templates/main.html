@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PREMIERS PAS AVEC BRACKETS</title>
+        <title>Acceuil</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
          <!--  <link rel="stylesheet" href="./fonts/font-awesome/css/font-awesome.css">
@@ -609,6 +609,37 @@ nav{
                         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                        
+                        <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45" th:src="*{'data:image/jpg;base64,'+{activitie.user.image}}"alt="">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0 text-blue">@[[*{activitie.user.nom}]]</div>
+                                    <div class="h7 text-muted"> [[*{activitie.name}]]</div>
+                                </div>
+                            </div>
+                            <div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <form action="">
+                    <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                  
+                        <div class="input-group-prepend">
+                            <button type="submit" class="input-group-text"><i class="fa fa-send"></i></button>
+                        </div>
+                         <input type="hidden" class="form-control" placeholder="Enter text here..."> <br>
+                                  <input type="hidden" class="form-control" placeholder="Enter text here...">         
+                        <input type="text" class="form-control" placeholder="Enter text here..."> <br>
+                                               
+                    </div>
+                </div>
+                   </form>     
                     </div>
                 </div>
                 </div>
