@@ -35,4 +35,7 @@ public class User {
 	private String image;
 	@OneToMany(mappedBy = "user")
 	List<Activite>activite;
+	
+	@OneToMany(mappedBy="user")
+	List<Comment>comment;
 }

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import de.tekup.ex.models.Activite;
+import de.tekup.ex.models.Comment;
 import de.tekup.ex.models.User;
 import de.tekup.ex.repositories.ActivityRepository;
+import de.tekup.ex.repositories.CommentRepository;
 import de.tekup.ex.repositories.UserRepository;
 import de.tekup.ex.services.UserService;
 
@@ -26,6 +28,9 @@ public class UserController {
 	private UserRepository userRepo;
 	@Autowired
 	private ActivityRepository activityRepo;
+	
+	@Autowired
+	private CommentRepository commentRepo;
 	@GetMapping("/addNewUser")
 	public String showAddUser() {
 		return "/addUser.html";
@@ -69,6 +74,9 @@ public class UserController {
 		model.addAttribute("users",users);
 		List<Activite>activties=activityRepo.findAll();
 		model.addAttribute("activities", activties);
+		
+		List<Comment>comments=commentRepo.findAll();
+		model.addAttribute("comments", comments);
 		return "/main.html";
 		
 		

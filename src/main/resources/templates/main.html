@@ -609,33 +609,41 @@ nav{
                         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                        
+                        <div th:each="comment: ${comments}">
+                        <div th:if="${comment.activite.id}==${activitie.id}">
                         <div class="card-header">
+                        
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
+                           
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" th:src="*{'data:image/jpg;base64,'+{activitie.user.image}}"alt="">
+                                
+                                    <img class="rounded-circle" width="55" th:src="*{'data:image/jpg;base64,'+{comment.user.image}}"alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0 text-blue">@[[*{activitie.user.nom}]]</div>
-                                    <div class="h7 text-muted"> [[*{activitie.name}]]</div>
+                                
+                                    <div class="h5 m-0 text-blue">@[[*{comment.user.nom}]]</div>
+                                    <div class="h7 text-muted"> [[*{comment.message}]]</div>
                                 </div>
+                           
+                           </div>
                             </div>
                             <div>
                                
                             </div>
                         </div>
                     </div>
-                    <form action="">
+                    </div>
+                    <form action="/addMsg" method="post">
                     <div class="chat-message clearfix">
                     <div class="input-group mb-0">
                   
                         <div class="input-group-prepend">
                             <button type="submit" class="input-group-text"><i class="fa fa-send"></i></button>
                         </div>
-                         <input type="hidden" class="form-control" placeholder="Enter text here..."> <br>
-                                  <input type="hidden" class="form-control" placeholder="Enter text here...">         
-                        <input type="text" class="form-control" placeholder="Enter text here..."> <br>
+                         <input type="hidden" class="form-control" placeholder="Enter text here..." name="idu" th:value="${session.id}"> <br>
+                                  <input type="hidden" class="form-control" placeholder="Enter text here..." name="ida" th:value="*{activitie.id}">         
+                        <input type="text" class="form-control" placeholder="Enter text here..." name="message"> <br>
                                                
                     </div>
                 </div>
