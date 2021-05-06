@@ -584,7 +584,7 @@ nav{
                                     <img class="rounded-circle" width="45" th:src="*{'data:image/jpg;base64,'+{activitie.user.image}}"alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0 text-blue">@[[*{activitie.user.nom}]]</div>
+                                    <div class="h5 m-0 text-blue">[[*{activitie.user.nom}]] [[*{activitie.user.prenom}]]</div>
                                     <div class="h7 text-muted"> [[*{activitie.name}]]</div>
                                 </div>
                             </div>
@@ -611,6 +611,7 @@ nav{
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                         <div th:each="comment: ${comments}">
                         <div th:if="${comment.activite.id}==${activitie.id}">
+                        
                         <div class="card-header">
                         
                         <div class="d-flex justify-content-between align-items-center">
@@ -622,8 +623,9 @@ nav{
                                 </div>
                                 <div class="ml-2">
                                 
-                                    <div class="h5 m-0 text-blue">@[[*{comment.user.nom}]]</div>
-                                    <div class="h7 text-muted"> [[*{comment.message}]]</div>
+                                    <div class="h5 m-0 text-blue">[[*{comment.user.nom}]] [[*{comment.user.prenom}]]</div>
+                                    <div class="h7 "> [[*{comment.message}]]</div>
+                                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o">[[*{comment.time}]]</i></div>
                                 </div>
                            
                            </div>
@@ -642,7 +644,8 @@ nav{
                             <button type="submit" class="input-group-text"><i class="fa fa-send"></i></button>
                         </div>
                          <input type="hidden" class="form-control" placeholder="Enter text here..." name="idu" th:value="${session.id}"> <br>
-                                  <input type="hidden" class="form-control" placeholder="Enter text here..." name="ida" th:value="*{activitie.id}">         
+                                  <input type="hidden" class="form-control" placeholder="Enter text here..." name="ida" th:value="*{activitie.id}">
+                                  <input type="hidden" class="form-control" placeholder="Enter text here..." name="time"  th:value="${#dates.format(#dates.createNow(), ' hh:mm')}">         
                         <input type="text" class="form-control" placeholder="Enter text here..." name="message"> <br>
                                                
                     </div>
@@ -662,7 +665,18 @@ nav{
             <div class="col-lg-3">
                 <div class="card social-timeline-card">
                     <div class="card-body">
-                        <h5 class="card-title">People you may know</h5>
+                        <h5 class="card-title">Mes Contacts</h5>
+                        <form action="#" th:action="@{/main}" method="get">
+     <div class="input-group mb-0">
+     <div class="input-group-prepend">
+                            <button type="submit" class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+<input id="txtsearch" type="text" name="keyword" class="form-control">
+
+
+</div>
+
+</form>
                         <ul class="friend-list">
                         <div th:each="user: ${users}">
                             <li>
@@ -671,7 +685,7 @@ nav{
                                     <img th:src="*{'data:image/jpg;base64,'+{user.image}}" alt="">
                                 </div>
                                 <div class="right">
-                                    <h3>[[*{user.nom}]]</h3>
+                                        <a href="#" class="card-link"> <h3>[[*{user.nom}]] [[*{user.prenom}]]</h3></a>
                                     <p>10 Friends</p>
                                 </div>
                                

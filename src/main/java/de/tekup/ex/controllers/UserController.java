@@ -69,9 +69,12 @@ public class UserController {
 	}
 
 	@GetMapping("/main")
-	public String showUsers(Model model) {
-		List<User>users=userRepo.findAll();
-		model.addAttribute("users",users);
+	public String showUsers(Model model,String keyword) {
+		if(keyword!=null) {
+			model.addAttribute("users", UserService.findByKeyword(keyword));
+		}else {
+			model.addAttribute("users", UserService.getAllUsers());
+		}
 		List<Activite>activties=activityRepo.findAll();
 		model.addAttribute("activities", activties);
 		
@@ -81,4 +84,18 @@ public class UserController {
 		
 		
 	}
+	
+	/*@GetMapping("/users")
+	public String viewHomePage(Model model,String keyword) {
+		if(keyword!=null) {
+			model.addAttribute("users", UserService.findByKeyword(keyword));
+		}else {
+			model.addAttribute("users", UserService.getAllUsers());
+		}
+		return "/main";
+		
+		
+		
+		
+	}*/
 }

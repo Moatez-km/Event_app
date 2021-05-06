@@ -21,10 +21,11 @@ public class CommentServiceImpl implements CommentService{
 	private CommentRepository commentRepo;
 
 	@Override
-	public void SaveComment(String message, long idu, long ida) {
+	public void SaveComment(String time,String message, long idu, long ida) {
 		// TODO Auto-generated method stub
 		
 		Comment c=new Comment();
+		c.setTime(time);
 		c.setMessage(message);
 		c.setActivite(activiteRepo.findById(ida).get());
 		c.setUser(userRepo.findById(idu).get());

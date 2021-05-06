@@ -13,9 +13,9 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	@PostMapping("/addMsg")
-	public String AddMsg(@RequestParam("message")String message,@RequestParam("idu")long idu,@RequestParam("ida")long ida) {
+	public String AddMsg(@RequestParam("time")String time,@RequestParam("message")String message,@RequestParam("idu")long idu,@RequestParam("ida")long ida) {
 		
-		commentService.SaveComment(message, idu, ida);	
+		commentService.SaveComment(time,message, idu, ida);	
 		
 	return "redirect:/main";
 	}

@@ -80,6 +80,14 @@ public class UserServiceImpl implements UserService{
 		userRepo.save(u);
 		
 	}
+
+
+
+	@Override
+	public List<User> findByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return userRepo.findByKeyword(keyword);
+	}
 	
 	
 

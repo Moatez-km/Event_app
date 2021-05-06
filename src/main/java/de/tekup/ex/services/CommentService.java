@@ -4,7 +4,7 @@ import de.tekup.ex.models.Comment;
 
 public interface CommentService {
 	
-	void SaveComment(String message,long idu,long ida);
+	void SaveComment(String time,String message,long idu,long ida);
 	Comment getCommentById(long id);
 
 }

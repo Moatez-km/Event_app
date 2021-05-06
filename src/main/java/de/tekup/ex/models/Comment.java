@@ -18,6 +18,8 @@ public class Comment {
 	private Long id;
 	@Column(name = "message",length = 255,nullable = false)
 	private String message;
+	@Column(name = "time",length = 255,nullable = false)
+	private String time;
 	@ManyToOne
 	private User user;
 	@ManyToOne
