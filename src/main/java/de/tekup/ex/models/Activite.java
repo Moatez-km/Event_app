@@ -39,4 +39,6 @@ public class Activite {
 	User user;
 	@OneToMany(mappedBy = "activite")
 	List<Comment>comment;
+	@OneToMany(mappedBy = "activite")
+	List<Reactions> react;
 }

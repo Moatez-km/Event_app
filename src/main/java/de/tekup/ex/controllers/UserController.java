@@ -14,20 +14,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 import de.tekup.ex.models.Activite;
 import de.tekup.ex.models.Comment;
+import de.tekup.ex.models.Reactions;
 import de.tekup.ex.models.User;
 import de.tekup.ex.repositories.ActivityRepository;
 import de.tekup.ex.repositories.CommentRepository;
-import de.tekup.ex.repositories.UserRepository;
+import de.tekup.ex.repositories.ReactionsRepository;
 import de.tekup.ex.services.UserService;
 
 @Controller
 public class UserController {
 	@Autowired
 	private UserService UserService;
-	@Autowired
-	private UserRepository userRepo;
+
 	@Autowired
 	private ActivityRepository activityRepo;
+	@Autowired
+	private ReactionsRepository reactRepo;
 	
 	@Autowired
 	private CommentRepository commentRepo;
@@ -80,6 +82,9 @@ public class UserController {
 		
 		List<Comment>comments=commentRepo.findAll();
 		model.addAttribute("comments", comments);
+		
+		List<Reactions>reactions=reactRepo.findAll();
+		model.addAttribute("reactions", reactions);
 		return "/main.html";
 		
 		
